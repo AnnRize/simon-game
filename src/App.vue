@@ -56,6 +56,7 @@ function reset() {
   isStart.value = false;
   currentBlock.value = 0;
   difficultyLevel.value = 1.5;
+  roundNumber.round = 1;
   array.value = [];
   yourTurn.value = [];
   isPlay.value = false;
@@ -105,7 +106,6 @@ async function click(id) {
     @click="
       () => {
         isFailure = false;
-        roundNumber.round = 1;
       }
     "
   >
