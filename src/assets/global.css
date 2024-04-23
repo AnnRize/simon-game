@@ -1,0 +1,26 @@
+:root {
+  --primary: rgb(30, 30, 30);
+  --secondary: rgb(49, 158, 109);
+
+  color: var(--secondary);
+  background-color: var(--primary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
