@@ -1,3 +1,3 @@
 # Simon | Game
 
-### Demo  [Simon | Game](https://annrize.github.io/simon-game/)
+### Demo  [Link](https://annrize.github.io/simon-game/)
