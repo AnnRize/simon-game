@@ -252,8 +252,8 @@ async function click(id) {
   background: linear-gradient(
     120deg,
     yellow 20%,
-    blue 25% 45%,
-    red 50% 70%,
+    red 25% 45%,
+    blue 50% 70%,
     green 75% 95%
   );
 
