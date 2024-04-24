@@ -14,7 +14,7 @@ const audioObject = {
 };
 
 const isStart = ref(false);
-const difficultyLevel = ref(1.5);
+const difficultyLevel = ref("1.5");
 const currentBlock = ref(0);
 const roundNumber = reactive({ round: 1 });
 const array = ref([]);
@@ -49,13 +49,12 @@ function playRound() {
     }
 
     i++;
-  }, difficultyLevel.value * 1000);
+  }, Number(difficultyLevel.value) * 1000);
 }
 
 function reset() {
   isStart.value = false;
   currentBlock.value = 0;
-  difficultyLevel.value = 1.5;
   roundNumber.round = 1;
   array.value = [];
   yourTurn.value = [];
@@ -73,7 +72,6 @@ async function click(id) {
   currentBlock.value = 0;
   await delay(0);
   currentBlock.value = id;
-  audioPlay();
   yourTurn.value.push(id);
 
   // проигрыш
@@ -81,6 +79,8 @@ async function click(id) {
     reset();
     return;
   }
+
+  audioPlay();
 
   clickNumber.value = clickNumber.value + 1;
 
@@ -93,7 +93,7 @@ async function click(id) {
       currentBlock.value = 0;
       clearTimeout(timer);
       playRound();
-    }, difficultyLevel.value * 1000);
+    }, Number(difficultyLevel.value) * 1000);
   }
   isPlay.value = false;
 }
@@ -134,10 +134,9 @@ async function click(id) {
       <div class="difficultWrapper">
         <div class="difficult">
           <MyRadioButton
-            checked
             name="lvl"
             id="easy"
-            :value="1.5"
+            value="1.5"
             v-model="difficultyLevel"
           />
           <label for="easy">Легкий</label>
@@ -146,7 +145,7 @@ async function click(id) {
           <MyRadioButton
             name="lvl"
             id="medium"
-            :value="1"
+            value="1"
             v-model="difficultyLevel"
           />
           <label for="medium">Средний</label>
@@ -155,7 +154,7 @@ async function click(id) {
           <MyRadioButton
             name="lvl"
             id="hard"
-            :value="0.4"
+            value="0.4"
             v-model="difficultyLevel"
           />
           <label for="hard">Сложный</label>
@@ -164,7 +163,7 @@ async function click(id) {
     </section>
 
     <p v-if="isStart" class="round">Round: {{ roundNumber.round }}</p>
-    <div v-if="isStart" class="game">
+    <div class="game">
       <button
         class="gameButton yellow"
         :class="{ active: currentBlock === 1 }"

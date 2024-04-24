@@ -4,7 +4,6 @@ const { modelValue, id, value } = defineProps({
   id: { type: String, required: true },
   name: String,
   value: String | Number,
-  checked: Boolean,
 });
 </script>
 
@@ -13,6 +12,7 @@ const { modelValue, id, value } = defineProps({
     type="radio"
     class="input"
     :value="modelValue"
+    :checked="modelValue === value"
     @change="$emit('update:modelValue', $event.target.value)"
     v-bind="$props"
   />
