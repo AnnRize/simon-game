@@ -1,21 +1,18 @@
+<script>
+export default {
+  inheritAttrs: false,
+};
+</script>
+
 <script setup>
-const { modelValue, id, value } = defineProps({
-  modelValue: String | Boolean,
+const model = defineModel();
+const { id } = defineProps({
   id: { type: String, required: true },
-  name: String,
-  value: String | Number,
 });
 </script>
 
 <template>
-  <input
-    type="radio"
-    class="input"
-    :value="modelValue"
-    :checked="modelValue === value"
-    @change="$emit('update:modelValue', $event.target.value)"
-    v-bind="$props"
-  />
+  <input type="radio" class="input" :id="id" v-model="model" v-bind="$attrs" />
   <label :for="id" />
 </template>
 
